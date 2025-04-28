@@ -8,11 +8,10 @@ extrato= ""
 limite_diario=0
 lista={}
 saldo_novo=0
- #Data de fora---------------------------------------------
+
 codigo1=datetime.now(pytz.timezone("America/Sao_Paulo"))
 data_inicial=codigo1.date()
-#------------------------------------------------------
-#FUNÇÃO DEPOSITAR---------------------
+
 def depositar(extrato,saldo,limite_diario,data,lista):
      if lista =={ }:
         print("Realize um cadastro para efetuar operações !")
@@ -29,7 +28,6 @@ def depositar(extrato,saldo,limite_diario,data,lista):
         print("Valor minimo de deposito é de R$ 5 reais")
         return extrato,saldo,limite_diario
 
-# FUNÇÃO SACAR-------------------------------
 def sacar(extrato,saldo,limite_diario,data,numero_saque,limite_saque,lista):
     if lista =={ }:
         print("Realize um cadastro para efetuar operações !")
@@ -57,7 +55,7 @@ def sacar(extrato,saldo,limite_diario,data,numero_saque,limite_saque,lista):
         print("Obrigado por utilizar os nossos serviços !!")
         return extrato,saldo,limite_diario,numero_saque
 
-#FUNÇÃO EXTRATO---
+
 def extrato_(extrato,saldo,lista):
      if lista =={ }:
         print("Realize um cadastro para consultar o historico !")
@@ -76,7 +74,7 @@ def extrato_(extrato,saldo,lista):
         print("Obrigado por utilizar os nossos serviços !!")
         return
 
-#FUNÇÃO CADASTRO USUARIO----
+
 def criacao_conta(lista,saldo_novo,saldo):
     if lista !={ }:
         print("Usuario já cadastrado")
@@ -125,7 +123,7 @@ def criacao_conta(lista,saldo_novo,saldo):
         print("Dados cadastrais apagados com Sucesso !!")
         return lista,saldo_novo,saldo
 
-#FUNÇÃO INFORMAÇÕES DO USUARIO
+
 def informacoes(lista):
     if lista =={ }:
         print("Nenhuma informação encontrada ! Realize um cadastro")
@@ -138,9 +136,9 @@ def informacoes(lista):
     print("cpf:",lista["CPF"])
     print("Endereço:",lista["endereço"])
     return
-#MENU -------------------
+
 while True:
-    #Data---------------------------------------------
+  
     codigo=datetime.now(pytz.timezone("America/Sao_Paulo"))
     formato_data = "%d/%m/%Y %H:%M"
     data=codigo.strftime(formato_data)
@@ -149,7 +147,6 @@ while True:
         limite_diario=0
         data_inicial=codigo
 
-    #------------------------------------------------------
     opcoes= int( input("[1] DEPOSITO \\ [2] SAQUE\\ [3] EXTRATO\\[4] CADASTRO E EFETIVAÇÃO DE CONTA\\ [5] INFORMAÇÕES DA CONTA"))
     if opcoes not in [1,2,3,4,5]:
         print("insira um valor válido")
@@ -167,7 +164,7 @@ while True:
         elif saida == 2:
             break
         
-        #SAQUE
+        
     if opcoes ==2:
         extrato,saldo,limite_diario,numero_saque= sacar(extrato,saldo,limite_diario,data,numero_saque,limite_saque,lista)
         
@@ -176,7 +173,7 @@ while True:
             print(opcoes)
         elif saida == 2:
             break
-        #EXTRATO
+        
     if opcoes ==3:
             extrato_(extrato,saldo,lista)
         
